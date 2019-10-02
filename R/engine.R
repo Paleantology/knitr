@@ -263,7 +263,8 @@ eng_rb = function(options) {
   opts$cleanupCacheDir = FALSE
   f = "cache/history.Rev"
   if (file.exists(normalizePath(f))){
-    old_code <- readLines(f, skip = -2)
+    old_code <- readLines(f)
+    old_code <- old_code[1:length(old_code)-1]
     print(old_code)
     new_code <- c(old_code, options$code)
     write(options$code, f, append = TRUE)
