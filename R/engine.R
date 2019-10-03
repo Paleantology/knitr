@@ -263,11 +263,10 @@ eng_rb = function(options) {
   opts$cleanupCacheDir = FALSE
   f = "cache/history.Rev"
   if (file.exists(normalizePath(f))){
-    old_code <- readLines(f)
-    old_code <- old_code[1:length(old_code)-1]
-    print(old_code)
+    old_code <- as.vector(readLines(f))
+    old_code <- head(old_code,  -1)
     new_code <- c(old_code, options$code)
-    write(options$code, f, append = TRUE)
+    write(new_code, f, append = FALSE)
   } else {
     print(normalizePath(f))
     write_utf8(con = f, options$code)
