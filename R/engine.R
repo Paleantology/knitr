@@ -262,13 +262,12 @@ eng_rb = function(options) {
 #  dir.create(cache, showWarnings = FALSE)
   opts$cleanupCacheDir = FALSE
   f = "cache/history.Rev"
-  if (file.exists(normalizePath(f))){
+  if (file.exists(f)){
     old_code <- as.vector(readLines(f))
-    old_code <- head(old_code,  -1)
+    old_code <- head(old_code,  -2)
     new_code <- c(old_code, options$code)
     write(new_code, f, append = FALSE)
   } else {
-    print(normalizePath(f))
     write_utf8(con = f, options$code)
   }
 #  on.exit(unlink(f), add = TRUE)
@@ -281,7 +280,8 @@ eng_rb = function(options) {
         if (!options$error) stop(e)
       }
     )
-  out = out[-(1:13)]
+  out <- as.vector(out)
+  out = out[-(1:13), :]
 
 
   }
