@@ -1,4 +1,11 @@
+# CHANGES IN knitr VERSION 1.27
+
+
 # CHANGES IN knitr VERSION 1.26
+
+## NEW FEATURES
+
+- `write_bib()` also includes all citation entries in the package's `CITATION` file if provided.
 
 ## MINOR CHANGES
 
