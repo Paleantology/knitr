@@ -357,7 +357,9 @@ eng_rb = function(options) {
         paste('Error in running command rb:')
       }
     )
-  } else {''}
+  }
+
+  else {''}
   # chunk option error=FALSE means we need to signal the error
   if (!options$error && !is.null(attr(out,'status'))) {
     stop(one_string(out))
